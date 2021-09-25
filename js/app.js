@@ -58,7 +58,24 @@ let lists = document.querySelectorAll('li')
 
 //smmothy scroll
 
+document
+    .querySelectorAll('.navbar__menu a[href^="#section"]')
 
+    .forEach(function(scrollbehavior) {
+        scrollbehavior.onclick = function(e) {
+            e.preventDefault();
+            const link = this.getAttribute('href');
+            const Koordinaten= document.querySelector(link);
+            const header = 102;
+            const localpostion = Koordinaten.offsetTop;
+            const position = localpostion - header;
+
+            window.scrollTo({
+                top:position,
+                behavior: "smooth"
+            });
+        };
+    });
 
 
 // Scroll to anchor ID using scrollTO event
